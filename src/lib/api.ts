@@ -46,3 +46,13 @@ export async function queryRag(question: string): Promise<string> {
     const data = await response.json();
     return data.answer || data.response || data.text || JSON.stringify(data);
 }
+
+export async function clearDatabase(): Promise<void> {
+    const response = await fetch(`${BASE_URL}/rag/clear`, {
+        method: "POST",
+    });
+
+    if (!response.ok) {
+        throw new Error(`Clear failed (${response.status})`);
+    }
+}

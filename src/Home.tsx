@@ -3,11 +3,30 @@ import ChatContent from "./components/ChatContent";
 import ChatInput from "./components/ChatInput";
 import Header from "./components/Header";
 import type { Message } from "./types";
-import { uploadFile, queryRag } from "./lib/api";
+import { uploadFile, queryRag, clearDatabase } from "./lib/api";
 
 export default function Home() {
     const [messages, setMessages] = useState<Message[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+
+    const handleClear = async () => {
+        const choice = confirm(
+            "Clear chat UI and server database? (Cancel to clear only UI)",
+        );
+
+        if (choice) {
+            try {
+                await clearDatabase();
+                setMessages([]);
+            } catch (error) {
+                console.error("Failed to clear database:", error);
+                alert("Failed to clear server database. UI cleared.");
+                setMessages([]);
+            }
+        } else {
+            setMessages([]);
+        }
+    };
 
     const handleSend = async (text: string) => {
         setIsLoading(true);
@@ -57,7 +76,7 @@ export default function Home() {
 
     return (
         <div className="w-full relative max-w-6xl mx-auto px-6 flex flex-col h-screen">
-            <Header />
+            <Header onClear={handleClear} />
 
             <ChatContent messages={messages} isLoading={isLoading} />
 

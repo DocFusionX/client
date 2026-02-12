@@ -33,7 +33,7 @@ export default function ChatInput({
     };
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 p-4 pb-8 bg-white bg-opacity-90 backdrop-blur-sm border-t border-gray-100">
+        <div className="fixed bottom-0 left-0 right-0 pt-4 pb-8 bg-white bg-opacity-90 backdrop-blur-sm border-t border-gray-100">
             <div className="w-full max-w-6xl mx-auto px-6 flex items-center gap-2">
                 <FileUploadButton onUpload={onUpload} isLoading={disabled} />
                 <Field className="flex-1">

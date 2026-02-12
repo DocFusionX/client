@@ -10,9 +10,15 @@ export default function Home() {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClear = async () => {
-        const choice = confirm(
-            "Clear chat UI and server database? (Cancel to clear only UI)",
-        );
+        const choice = confirm("Start a new conversation?");
+
+        if (choice) {
+            setMessages([]);
+        }
+    };
+
+    const handleDelete = async () => {
+        const choice = confirm("Clear database and delete this message?");
 
         if (choice) {
             try {
@@ -23,8 +29,6 @@ export default function Home() {
                 alert("Failed to clear server database. UI cleared.");
                 setMessages([]);
             }
-        } else {
-            setMessages([]);
         }
     };
 
@@ -76,7 +80,7 @@ export default function Home() {
 
     return (
         <div className="w-full relative max-w-6xl mx-auto px-6 flex flex-col h-screen">
-            <Header onClear={handleClear} />
+            <Header onClear={handleClear} onDelete={handleDelete} />
 
             <ChatContent messages={messages} isLoading={isLoading} />
 

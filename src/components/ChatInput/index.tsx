@@ -1,11 +1,13 @@
 import { Field } from "../ui/field";
 import { Input } from "../ui/input";
 import { ArrowUp } from "lucide-react";
+import FileUploadButton from "../FileUploadButton";
 
 export default function ChatInput() {
     return (
         <div className="fixed bottom-0 left-0 right-0 p-4 pb-8 bg-white bg-opacity-90 backdrop-blur-sm border-t border-gray-200">
             <div className="flex items-center gap-2">
+                <FileUploadButton />
                 <Field>
                     <Input
                         id="input-field-chat"

@@ -1,3 +1,3 @@
 ## DocFusionX Client
 
-![sc](https://github.com/user-attachments/assets/7fc67158-358f-4cbf-b552-8b577e90f411)
+![mockups](https://github.com/user-attachments/assets/bd9febb7-f6a1-44e4-95f3-2b7727964a01)
